@@ -24,11 +24,39 @@ const Input = () => {
         changeTaskInput(event.target.value);
     }
     const completeTask = (id) => {
+        const updated = tasks.map((item, index) => {
+            if (index == id) {
+                return { content: item.content, isCompleted: item.isCompleted ? false : true };
+            } else return item;
+        })
+        updateTasks(updated);
         
-    }
-    const moveTaskUp = (id) => {};
-    const moveTaskDown = (id) => {};
-    const deleteTask = (id) => {};
+    };
+    const moveTaskUp = (id) => {
+        
+        const updated = [...tasks]
+        if (id != 0) {
+            let temp = updated[id-1];
+            updated[id - 1] = updated[id];
+            updated[id] = temp;
+        }
+        updateTasks(updated);
+    };
+    const moveTaskDown = (id) => {
+        const updated = [...tasks];
+        if (id != tasks.length-1) {
+          let temp = updated[id + 1];
+          updated[id + 1] = updated[id];
+          updated[id] = temp;
+        }
+        updateTasks(updated);
+    };
+    const deleteTask = (id) => {
+        const update = tasks.filter((item, index) => {
+            return id != index;
+        })
+        updateTasks(update);
+    };
 
     return (
       <div>
