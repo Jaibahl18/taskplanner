@@ -1,4 +1,6 @@
 import Input from "./Input.jsx"
+import TaskComponent from "./TaskComponent.jsx";
+
 
 
 const App = () => {
@@ -6,6 +8,8 @@ const App = () => {
     <div className="h-screen flex flex-col justify-center items-center">
       <h1>Task Planner</h1>
       <Input />
+      
+
       
     </div>
   )
